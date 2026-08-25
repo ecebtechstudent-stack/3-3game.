@@ -1,0 +1,105 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: #0f172a;
+  color: white;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  text-align: center;
+  padding: 20px;
+}
+
+h1{
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 5px;
+}
+
+.crafted{
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #94a3b8;
+  font-weight: 600;
+  opacity: 0.9;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.turn{
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+.game-wrap{
+  position: relative;
+  width: 90vw;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.board{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.board div{
+  background: rgba(255,255,255,0.06);
+  border: 2px solid #334155;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.board div:hover{
+  background: rgba(255,255,255,0.12);
+}
+
+#result{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.9);
+  border: 2px solid #22c55e;
+  padding: 22px 28px;
+  font-size: 22px;
+  font-weight: 900;
+  border-radius: 15px;
+  display: none;
+  z-index: 10;
+  width: 85%;
+  box-shadow: 0 0 30px rgba(34,197,94,0.4);
+}
+
+.restart{
+  margin-top: 25px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  color: black;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+}
