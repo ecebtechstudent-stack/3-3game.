@@ -1,93 +1,94 @@
-let board = ["","","","","","","","",""];
+let board = Array(9).fill("");
 let gameOver = false;
-let boardDiv = document.getElementById("board");
-let resultDiv = document.getElementById("result");
-let statusDiv = document.getElementById("status");
+let currentLevel = "hard"; // Default 90% Hard
 
-const wins = [
-  [0,1,2], [3,4,5], [6,7,8],
-  [0,3,6], [1,4,7], [2,5,8],
-  [0,4,8], [2,4,6]
-];
+const boardDiv = document.getElementById("board");
+const statusText = document.getElementById("status");
+const resultDiv = document.getElementById("result");
 
-function drawBoard(){
+function setLevel(level){
+  currentLevel = level;
+  document.getElementById("easyBtn").className = level === "easy"? "active" : "";
+  document.getElementById("hardBtn").className = level === "hard"? "active" : "";
+  resetGame();
+}
+
+function render(){
   boardDiv.innerHTML = "";
-  board.forEach((val, i) => {
+  board.forEach((val,i)=>{
     let cell = document.createElement("div");
     cell.innerText = val;
-    if(val === "X") cell.style.color = "#22c55e";
-    if(val === "O") cell.style.color = "#ef4444";
-    cell.onclick = () => playerMove(i);
+    cell.onclick = ()=> playerMove(i);
     boardDiv.appendChild(cell);
   });
 }
-drawBoard();
 
-function checkWinner(p){
-  return wins.some(combo => combo.every(index => board[index] === p));
-}
-
-function endGame(message){
-  gameOver = true;
-  resultDiv.innerHTML = message; // innerHTML is important for stylish text
-  resultDiv.style.display = "block";
+function playerMove(i){
+  if(board[i]!=="" || gameOver) return;
+  board[i]="X";
+  render();
+  if(checkEnd()) return;
+  statusText.innerText = "Ankit AI Thinking...";
+  setTimeout(()=>{
+    let ai = getAIMove();
+    if(ai!==undefined){ board[ai]="O"; }
+    render();
+    checkEnd();
+  }, 400);
 }
 
 function getAIMove(){
-  // 1. Try to Win
-  for(let i=0; i<9; i++){
-    if(board[i] === ""){
-      board[i] = "O";
-      if(checkWinner("O")){ board[i] = ""; return i; }
-      board[i] = "";
+  let bestMove = null;
+  // 1. AI jeet sakta hai?
+  for(let i=0;i<9;i++){
+    if(board[i]===""){ board[i]="O"; if(checkWinner("O")){ bestMove=i; board[i]=""; break; } board[i]=""; }
+  }
+  // 2. Player ko rokna hai?
+  if(bestMove===null){
+    for(let i=0;i<9;i++){
+      if(board[i]===""){ board[i]="X"; if(checkWinner("X")){ bestMove=i; board[i]=""; break; } board[i]=""; }
     }
   }
-  // 2. Try to Block You
-  for(let i=0; i<9; i++){
-    if(board[i] === ""){
-      board[i] = "X";
-      if(checkWinner("X")){ board[i] = ""; return i; }
-      board[i] = "";
-    }
+  if(bestMove===null && board[4]==="") bestMove = 4; // Center
+
+  let empty = board.map((v,i)=> v===""? i:null).filter(v=> v!==null);
+  let randomMove = empty[Math.floor(Math.random()*empty.length)];
+  if(bestMove===null) bestMove = randomMove;
+
+  // 90% HARD LOGIC
+  if(currentLevel==="hard"){
+    return Math.random() < 0.9? bestMove : randomMove;
+  }else{
+    return Math.random() < 0.9? randomMove : bestMove;
   }
-  // 3. Take Center
-  if(board[4] === "") return 4;
-  // 4. Random Move
-  let empty = board.map((v,i) => v === ""? i : null).filter(v => v!== null);
-  return empty[Math.floor(Math.random() * empty.length)];
 }
 
-function playerMove(i){
-  if(board[i]!== "" || gameOver) return;
-
-  board[i] = "X";
-  drawBoard();
-
-  if(checkWinner("X")){
-    endGame("YOU DOMINATE<br><span style='font-size:14px; color:#22c55e; letter-spacing:3px; font-weight:600;'>ANKIT AI 🤖</span>");
-    return;
-  }
-
-  if(!board.includes("")){
-    endGame("DRAW 🤝");
-    return;
-  }
-
-  statusDiv.innerText = "Ankit AI Thinking...";
-
-  setTimeout(() => {
-    let aiIndex = getAIMove();
-    if(aiIndex!== undefined){
-      board[aiIndex] = "O";
-      drawBoard();
-    }
-
-    if(checkWinner("O")){
-      endGame("ANKIT AI WINS<br><span style='font-size:12px; color:#ef4444; letter-spacing:2px;'>TRY AGAIN 😈</span>");
-    } else if(!board.includes("")){
-      endGame("DRAW 🤝");
-    } else {
-      statusDiv.innerText = "Your Turn — You are X";
-    }
-  }, 400);
+function checkWinner(p){
+  const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  return wins.some(c=> c.every(i=> board[i]===p));
 }
+
+function checkEnd(){
+  if(checkWinner("X")){ endGame("YOU DOMINATE ANKIT AI 🔥"); return true; }
+  if(checkWinner("O")){ endGame("ANKIT AI WINS 😈"); return true; }
+  if(!board.includes("")){ endGame("DRAW 🤝"); return true; }
+  statusText.innerText = "Your Turn - You are X";
+  return false;
+}
+
+function endGame(msg){
+  gameOver=true;
+  resultDiv.innerText = msg;
+  resultDiv.style.display = "block";
+  statusText.innerText = msg;
+}
+
+function resetGame(){
+  board = Array(9).fill("");
+  gameOver=false;
+  resultDiv.style.display="none";
+  statusText.innerText="Your Turn - You are X";
+  render();
+}
+
+render();
