@@ -3,20 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>X-O WAR - Ankit</title>
+<title>X-O WAR</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <h1>X-O WAR</h1>
   <p class="crafted">CRAFTED BY ANKIT • 2026</p>
 
   <div class="btns">
-    <button id="easyBtn" class="active" onclick="setLevel('easy')">EASY 😊</button>
-    <button id="hardBtn" class="inactive" onclick="setLevel('hard')">HARD 😈</button>
+    <button id="easyBtn" onclick="setLevel('easy')">EASY 😊</button>
+    <button id="hardBtn" class="active" onclick="setLevel('hard')">HARD 😈</button>
   </div>
 
-  <p id="status">Your Turn - You are X</p>
+  <p class="turn" id="status">Your Turn - You are X</p>
 
   <div class="game-wrap">
     <div id="board" class="board"></div>
@@ -24,7 +23,6 @@
   </div>
 
   <button class="restart" onclick="location.reload()">Restart Game</button>
-
 <script src="script.js"></script>
 </body>
 </html>
