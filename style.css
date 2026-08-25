@@ -48,3 +48,5 @@ h1{ font-size:32px; font-weight:900; letter-spacing:3px; margin-top:15px; }
   border:none; border-radius:10px;
   background:white; color:black; font-weight:700; cursor:pointer;
 }
+.board div.x{ color: white; }
+.board div.o{ color: #22c55e; text-shadow:0 0 10px #22c55e; }
