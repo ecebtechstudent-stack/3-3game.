@@ -29,17 +29,24 @@ h1{ margin-top:30px; font-size:36px; letter-spacing:2px; }
 .board div.x{ color:white; }
 .board div.o{ color:#22c55e; text-shadow:0 0 10px #22c55e; }
 
-#result{
-  position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  color:white; font-size:28px; font-weight:900;
-  display:none; width:100%; z-index:10;
-  text-align:center;
-  text-shadow: 0 0 15px black;
-}
+pp#result{
+  grid-column: 1 / -1; /* Puri row lega */
+  background: #facc15!important; /* Mast Yellow Colour */
+  color: #000!important;
+  border: 2px solid #eab308!important;
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.6)!important;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  display: none;
+  text-align: center;
+  margin: 2px 0;
+  position: static!important;
+  transform: none!important;
+  text-shadow: none!important;
+             }
 .restart{
   margin-top:25px; padding:12px 30px;
   border:none; border-radius:10px;
