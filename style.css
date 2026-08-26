@@ -29,7 +29,7 @@ h1{ margin-top:30px; font-size:36px; letter-spacing:2px; }
 .board div.x{ color:white; }
 .board div.o{ color:#22c55e; text-shadow:0 0 10px #22c55e; }
 
-pp#result{
+#result{
   grid-column: 1 / -1; /* Puri row lega */
   background: #facc15!important; /* Mast Yellow Colour */
   color: #000!important;
