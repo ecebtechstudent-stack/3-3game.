@@ -13,14 +13,22 @@ function setLevel(level){
   resetGame();
 }
 
-function render(){
+ function render(){
   boardDiv.innerHTML = "";
   board.forEach((val,i)=>{
     let cell = document.createElement("div");
     cell.innerText = val;
     cell.onclick = ()=> playerMove(i);
+    // 3 cell ke baad result ko beech me daal do
+    if(i===3){
+      boardDiv.appendChild(resultDiv);
+    }
     boardDiv.appendChild(cell);
   });
+  // shuru me ek baar bhi add karna hai
+  if(board.every(v=>v==="")){
+     boardDiv.insertBefore(resultDiv, boardDiv.children[3]);
+  }
 }
 
 function playerMove(i){
