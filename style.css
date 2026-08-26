@@ -49,3 +49,8 @@ h1{ font-size:32px; font-weight:900; letter-spacing:3px; margin-top:15px; }
 }
 .board div.x{ color: white; }
 .board div.o{ color: #22c55e; text-shadow:0 0 10px #22c55e; }
+#result{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  }
