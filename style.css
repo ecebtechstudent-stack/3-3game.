@@ -32,17 +32,16 @@ h1{ font-size:32px; font-weight:900; letter-spacing:3px; margin-top:15px; }
   height:100px; display:flex; align-items:center; justify-content:center;
   font-size:42px; font-weight:bold; border-radius:12px; cursor:pointer;
 }
-#result{
+ #result{
   position:absolute; top:50%; left:50%;
   transform:translate(-50%,-50%);
-  background:#1e293b;
-  border:2px solid #22c55e;
+  background:none;
+  border:none;
   color:white; padding:20px 25px;
   font-size:20px; font-weight:900;
-  border-radius:14px; display:none;
+  display:none;
   width:85%; z-index:10;
-  box-shadow:0 10px 25px rgba(0,0,0,0.5);
-}
+ }
 .restart{
   margin-top:25px; padding:12px 30px;
   border:none; border-radius:10px;
