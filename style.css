@@ -1,54 +1,24 @@
-body{
-  margin:0; min-height:100vh;
-  background:#0f172a; color:white;
-  font-family: sans-serif;
-  display:flex; flex-direction:column;
-  align-items:center; text-align:center;
-}
-h1{ margin-top:30px; font-size:36px; letter-spacing:2px; }
-.crafted{ color:#94a3b8; font-size:12px; margin-top:-10px; letter-spacing:2px; }
-.btns{ display:flex; gap:10px; margin:20px 0; }
-.btns button{
-  padding:8px 18px; border-radius:20px;
-  border:1px solid #334155; background:#1e293b;
-  color:white; cursor:pointer;
-}
-.btns button.active{ background:white; color:black; }
-.turn{ color:#cbd5e1; margin-bottom:15px; }
-.game-wrap{ position:relative; width:92vw; max-width:320px; }
-.board{
-  display:grid; grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-.board div{
-  aspect-ratio:1/1; background:#1e293b;
-  border:1px solid #334155; border-radius:12px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:40px; font-weight:900; cursor:pointer;
-}
-.board div.x{ color:white; }
-.board div.o{ color:#22c55e; text-shadow:0 0 10px #22c55e; }
+body{margin:0;min-height:100vh;background:#0f172a;color:white;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;text-align:center}
+h1{margin-top:30px;font-size:36px}
+.crafted{color:#94a3b8;font-size:12px;margin-top:-10px;letter-spacing:2px}
+.btns{display:flex;gap:10px;margin:20px 0}
+.btns button{padding:8px 18px;border-radius:20px;border:1px solid #334155;background:#1e293b;color:white;cursor:pointer}
+.btns button.active{background:white;color:black}
+.turn{color:#cbd5e1;margin-bottom:15px}
+.game-wrap{width:92vw;max-width:320px}
+#board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+#board div{background:#1e293b;border:1px solid #334155;border-radius:12px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:900;cursor:pointer}
 
 #result{
-  grid-column: 1 / -1; /* Puri row lega */
-  background: #facc15!important; /* Mast Yellow Colour */
-  color: #000!important;
-  border: 2px solid #eab308!important;
-  box-shadow: 0 0 20px rgba(250, 204, 21, 0.6)!important;
-  border-radius: 12px;
-  padding: 12px;
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  display: none;
-  text-align: center;
-  margin: 2px 0;
-  position: static!important;
-  transform: none!important;
-  text-shadow: none!important;
-             }
-.restart{
-  margin-top:25px; padding:12px 30px;
-  border:none; border-radius:10px;
-  background:white; color:black; font-weight:700; cursor:pointer;
+ display:none;
+ background:#facc15;
+ color:black;
+ font-weight:900;
+ font-size:20px;
+ padding:14px;
+ border-radius:12px;
+ margin-top:15px;
+ box-shadow:0 0 25px rgba(250,204,21,0.7);
+ border:2px solid #eab308;
 }
+.restart{margin-top:25px;padding:12px 30px;border:none;border-radius:10px;background:white;color:black;font-weight:700;cursor:pointer}
