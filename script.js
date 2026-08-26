@@ -80,15 +80,4 @@ function endGame(msg){
   gameOver=true;
   resultDiv.innerText = msg;
   resultDiv.style.display = "block";
-  statusText.innerText = msg;
-}
-
-function resetGame(){
-  board = Array(9).fill("");
-  gameOver=false;
-  resultDiv.style.display="none";
-  statusText.innerText="Your Turn - You are X";
-  render();
-}
-
-render();
+  // YEH 3 LINE SE
